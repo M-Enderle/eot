@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkjk2ttl4avow"]
+
+[ext_resource type="VideoStream" path="res://backgrounds/background_slow (1).ogv" id="1_jk0py"]
+[ext_resource type="Texture2D" uid="uid://c3n0x0u6ldwdm" path="res://backgrounds/Screenshot 2024-01-25 145232.png" id="2_4p733"]
+[ext_resource type="FontFile" uid="uid://brpekiv3523cp" path="res://fonts/Voyager Grotesque(regular).ttf" id="3_hqgf3"]
+[ext_resource type="FontFile" uid="uid://barucs7s1oqp4" path="res://fonts/V-GERB(bold).ttf" id="4_hpaga"]
+[ext_resource type="Script" path="res://scripts/buttons/start_game.gd" id="5_trvk1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52exj"]
+line_spacing = 5.0
+font = ExtResource("3_hqgf3")
+font_size = 100
+shadow_size = 0
+shadow_color = Color(0.717647, 0.972549, 1, 0.447059)
+shadow_offset = Vector2(6.08, 4.645)
+
+[sub_resource type="Theme" id="Theme_yb7yk"]
+default_font = ExtResource("4_hpaga")
+default_font_size = 36
+
+[node name="menu" type="Node2D"]
+
+[node name="background_image" type="Sprite2D" parent="."]
+position = Vector2(581.5, 323)
+scale = Vector2(1.00609, 1)
+texture = ExtResource("2_4p733")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -2.0
+offset_right = 1155.0
+offset_bottom = 650.0
+stream = ExtResource("1_jk0py")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 55.0
+offset_right = 742.0
+offset_bottom = 307.0
+text = "ECHOES OF
+TOMORROW"
+label_settings = SubResource("LabelSettings_52exj")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 50.0
+offset_top = 281.0
+offset_right = 428.0
+offset_bottom = 416.0
+theme = SubResource("Theme_yb7yk")
+text = "START GAME"
+flat = true
+alignment = 0
+script = ExtResource("5_trvk1")
+
+[node name="ButtonText" type="RichTextLabel" parent="StartButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 71.0
+offset_right = 296.0
+offset_bottom = 180.0
+text = "Start game"

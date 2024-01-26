@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn58tuyu1rebi"]
+
+[ext_resource type="Texture2D" uid="uid://c7482cyfouxi5" path="res://backgrounds/dc423ebc-b202-4565-a283-f8492b8cfc3e.webp" id="1_2ajue"]
+[ext_resource type="Script" path="res://scripts/chat_window.gd" id="2_x71sy"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 310.0
+offset_top = 136.0
+offset_right = 1236.0
+offset_bottom = 723.0
+text = "TEST"
+
+[node name="Dc423Ebc-b202-4565-a283-f8492b8Cfc3e" type="Sprite2D" parent="."]
+position = Vector2(577, 327)
+scale = Vector2(0.642578, 0.642578)
+texture = ExtResource("1_2ajue")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 557.0
+offset_top = 539.0
+offset_right = 1016.0
+offset_bottom = 605.0
+script = ExtResource("2_x71sy")
