@@ -1,37 +1,43 @@
-extends HTTPRequest
+extends Node2D
 
-signal response_received(response)
+var api_key = "sk-"
+var temperature = 0.5
+var model = "gpt-3.5-turbo"
+var stream : bool = true
 
-var openai_url: String = "https://api.openai.com/v1/chat/completions"
-
-func _init() -> void:
-	connect("request_completed", Callable(self, "_on_request_completed"))
-
-func call_api(api_key: String, message: String, max_tokens: int = 100) -> void:
-	var headers: Array = [
-		"Authorization: Bearer " + api_key,
+# Disallow parallel
+signal stream_busy(is_busy:bool)
+	
+func _ready():
+	print($Client)
+	#$HTTPSSEClient.new_sse_event.connect(_on_new_sse_event)
+	#var system_message = {"role":"system", "content": "You are a helpful virtual assistant."}
+	
+func _on_new_sse_event():
+	print("test") 
+	
+func _call_gpt(prompt, ai_status_message):
+	var new_message = {"role": "user", "content": prompt} 
+	
+	var host = "https://api.openai.com"
+	var path = "/v1/chat/completions"
+	var url = host + path
+	
+	var headers = [
 		"Content-Type: application/json",
+		"Authorization: Bearer " + api_key
 	]
+	
+	var body = JSON.stringify({
+			"model": model,
+			"messages": [new_message], # Send the array to chatGPT
+			"temperature": temperature,
+			"stream": true,
+	})
+	
+	$HTTPSSEClient.connect_to_host(host, path, headers, body, ai_status_message, 443)
+	stream_busy.emit(true)
 
-	var postData: Dictionary = {
-		"model": "gpt-3.5-turbo",
-		"messages": [{"role": "user", "content": message}],
-		"max_tokens": max_tokens
-	}
-
-	var json = JSON.new()
-	var error: int = request(openai_url, headers, HTTPClient.METHOD_POST, json.print(postData))
-	if error != OK:
-		push_error("HTTP request failed with error: " + str(error))
-
-func _on_request_completed(result: int, response_code: int, headers: PackedByteArray, body: PackedByteArray) -> void:
-	var json = JSON.new()
-	var response = json.parse(body.get_string_from_utf8())
-	if response.error == OK:
-		var data = response.result
-		if "choices" in data and data["choices"].size() > 0:
-			emit_signal("response_received", data["choices"][0]["message"]["content"].split("\n"))
-		else:
-			emit_signal("response_received", [])
-	else:
-		push_error("JSON parsing error: " + str(response.error))
+func test():
+	_call_gpt("Hello", $TEST)
+	

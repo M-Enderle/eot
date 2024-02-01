@@ -14,6 +14,15 @@ config/name="Game"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
+[autoload]
+
+Store="*res://scripts/Store.gd"
+Openai="*res://scripts/openai.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/HTTPSSEClient/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
