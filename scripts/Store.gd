@@ -1,6 +1,6 @@
 extends Node
 
-var openai_key = "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"
+var openai_key = "sk-"
 var rev_ip = ""
 var input_tokens = 0
 var output_tokens = 0
