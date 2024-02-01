@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkjk2ttl4avow"]
+
+[ext_resource type="Script" path="res://scripts/menu/main_menu.gd" id="1_4086u"]
+[ext_resource type="Script" path="res://scripts/menu/key_check.gd" id="2_1ophy"]
+[ext_resource type="Texture2D" uid="uid://c3n0x0u6ldwdm" path="res://assets/main_background.png" id="3_05rkr"]
+[ext_resource type="VideoStream" path="res://assets/main_background.ogv" id="4_rlt62"]
+[ext_resource type="FontFile" uid="uid://brpekiv3523cp" path="res://fonts/Voyager Grotesque(regular).ttf" id="5_pq006"]
+[ext_resource type="FontFile" uid="uid://barucs7s1oqp4" path="res://fonts/V-GERB(bold).ttf" id="6_5sijr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52exj"]
+line_spacing = 5.0
+font = ExtResource("5_pq006")
+font_size = 100
+shadow_size = 0
+shadow_color = Color(0.717647, 0.972549, 1, 0.447059)
+shadow_offset = Vector2(6.08, 4.645)
+
+[sub_resource type="Theme" id="Theme_yb7yk"]
+default_font = ExtResource("6_5sijr")
+default_font_size = 36
+
+[sub_resource type="GDScript" id="GDScript_ea1pd"]
+script/source = "extends Button
+
+func _init():
+	connect(\"mouse_entered\", Callable(self, \"entered\"))
+	connect(\"mouse_exited\", Callable(self, \"exited\"))
+	
+func entered():
+	$ButtonText.text = \"[u]START GAME[/u]\"
+	
+func exited():
+	$ButtonText.text = \"START GAME\"
+"
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_4086u")
+
+[node name="KeyChecker" type="HTTPRequest" parent="."]
+script = ExtResource("2_1ophy")
+
+[node name="background_image" type="Sprite2D" parent="."]
+position = Vector2(581.5, 323)
+scale = Vector2(1.00609, 1)
+texture = ExtResource("3_05rkr")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -2.0
+offset_right = 1155.0
+offset_bottom = 650.0
+stream = ExtResource("4_rlt62")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 55.0
+offset_right = 742.0
+offset_bottom = 307.0
+text = "ECHOES OF
+TOMORROW"
+label_settings = SubResource("LabelSettings_52exj")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 50.0
+offset_top = 380.0
+offset_right = 428.0
+offset_bottom = 515.0
+theme = SubResource("Theme_yb7yk")
+flat = true
+alignment = 0
+script = SubResource("GDScript_ea1pd")
+
+[node name="ButtonText" type="RichTextLabel" parent="StartButton"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 64.0
+offset_right = 358.0
+offset_bottom = 173.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_5sijr")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "START GAME
+"
+
+[node name="KeyInput" type="LineEdit" parent="."]
+offset_left = 55.0
+offset_top = 309.0
+offset_right = 715.0
+offset_bottom = 382.0
+theme_override_fonts/font = ExtResource("5_pq006")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Enter your invite code or openAI API key"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_top = 605.0
+offset_right = 603.0
+offset_bottom = 743.0
+theme_override_fonts/normal_font = ExtResource("6_5sijr")
+theme_override_font_sizes/normal_font_size = 22
+text = "A game by Moritz Enderle"
+
+[node name="ErrorLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 56.0
+offset_top = 385.0
+offset_right = 302.0
+offset_bottom = 425.0
+theme_override_colors/default_color = Color(1, 0.372549, 0.356863, 1)
+text = "Please enter a valid key"

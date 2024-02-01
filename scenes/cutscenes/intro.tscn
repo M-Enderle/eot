@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn58tuyu1rebi"]
+
+[ext_resource type="Texture2D" uid="uid://c7482cyfouxi5" path="res://assets/cutscenes/dc423ebc-b202-4565-a283-f8492b8cfc3e.webp" id="1_4lkw7"]
+[ext_resource type="FontFile" uid="uid://40k34bl32w2c" path="res://fonts/EightBitDragon-anqx.ttf" id="2_akdcs"]
+[ext_resource type="Script" path="res://scripts/cutscenes/next.gd" id="3_hsgci"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ijjj"]
+line_spacing = 15.0
+font = ExtResource("2_akdcs")
+font_size = 40
+
+[node name="intro" type="Node2D"]
+script = ExtResource("3_hsgci")
+
+[node name="2" type="Sprite2D" parent="."]
+
+[node name="Dc423Ebc-b202-4565-a283-f8492b8Cfc3e" type="Sprite2D" parent="2"]
+position = Vector2(577, 327)
+scale = Vector2(0.642578, 0.642578)
+texture = ExtResource("1_4lkw7")
+
+[node name="ColorRect" type="ColorRect" parent="2"]
+offset_left = 119.0
+offset_top = 408.0
+offset_right = 679.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="2"]
+offset_left = 134.0
+offset_top = 430.0
+offset_right = 1314.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("2_akdcs")
+theme_override_font_sizes/font_size = 40
+text = "In a world where 
+artificial intelligence 
+intertwines with 
+every facet of life,"
+label_settings = SubResource("LabelSettings_4ijjj")
+
+[node name="1" type="Sprite2D" parent="."]
+
+[node name="Dc423Ebc-b202-4565-a283-f8492b8Cfc3e" type="Sprite2D" parent="1"]
+position = Vector2(577, 327)
+scale = Vector2(0.642578, 0.642578)
+texture = ExtResource("1_4lkw7")
+
+[node name="ColorRect" type="ColorRect" parent="1"]
+offset_left = 119.0
+offset_top = 408.0
+offset_right = 679.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="1"]
+offset_left = 134.0
+offset_top = 430.0
+offset_right = 1314.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("2_akdcs")
+theme_override_font_sizes/font_size = 40
+text = "In a world where 
+artificial intelligence 
+intertwines with 
+every facet of life,"
+label_settings = SubResource("LabelSettings_4ijjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Dc423Ebc-b202-4565-a283-f8492b8Cfc3e" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(577, 327)
+scale = Vector2(0.642578, 0.642578)
+texture = ExtResource("1_4lkw7")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = 119.0
+offset_top = 408.0
+offset_right = 679.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = 134.0
+offset_top = 430.0
+offset_right = 1314.0
+offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("2_akdcs")
+theme_override_font_sizes/font_size = 40
+text = "In a world where 
+artificial intelligence 
+intertwines with 
+every facet of life,"
+label_settings = SubResource("LabelSettings_4ijjj")
