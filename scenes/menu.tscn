@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkjk2ttl4avow"]
+[gd_scene load_steps=11 format=3 uid="uid://bkjk2ttl4avow"]
 
 [ext_resource type="Script" path="res://scripts/menu/main_menu.gd" id="1_4086u"]
 [ext_resource type="Script" path="res://scripts/menu/key_check.gd" id="2_1ophy"]
-[ext_resource type="Texture2D" uid="uid://c3n0x0u6ldwdm" path="res://assets/main_background.png" id="3_05rkr"]
-[ext_resource type="VideoStream" path="res://assets/main_background.ogv" id="4_rlt62"]
-[ext_resource type="FontFile" uid="uid://brpekiv3523cp" path="res://fonts/Voyager Grotesque(regular).ttf" id="5_pq006"]
-[ext_resource type="FontFile" uid="uid://barucs7s1oqp4" path="res://fonts/V-GERB(bold).ttf" id="6_5sijr"]
+[ext_resource type="AudioStream" uid="uid://e2pi5klu35ns" path="res://assets/audio/8bit_music_2.mp3" id="2_23kl2"]
+[ext_resource type="Texture2D" uid="uid://c3n0x0u6ldwdm" path="res://assets/levels/menu/main_background.png" id="3_05rkr"]
+[ext_resource type="VideoStream" path="res://assets/levels/menu/main_background.ogv" id="4_6fwuj"]
+[ext_resource type="FontFile" uid="uid://brpekiv3523cp" path="res://assets/fonts/Voyager Grotesque(regular).ttf" id="5_pq006"]
+[ext_resource type="FontFile" uid="uid://barucs7s1oqp4" path="res://assets/fonts/V-GERB(bold).ttf" id="6_5sijr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_52exj"]
 line_spacing = 5.0
@@ -36,6 +37,12 @@ func exited():
 [node name="menu" type="Node2D"]
 script = ExtResource("1_4086u")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_23kl2")
+volume_db = -14.157
+pitch_scale = 0.94
+autoplay = true
+
 [node name="KeyChecker" type="HTTPRequest" parent="."]
 script = ExtResource("2_1ophy")
 
@@ -48,7 +55,7 @@ texture = ExtResource("3_05rkr")
 offset_left = -2.0
 offset_right = 1155.0
 offset_bottom = 650.0
-stream = ExtResource("4_rlt62")
+stream = ExtResource("4_6fwuj")
 autoplay = true
 expand = true
 loop = true

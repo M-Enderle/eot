@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4tl26rqug0lp"]
+
+[ext_resource type="FontFile" uid="uid://40k34bl32w2c" path="res://assets/fonts/EightBitDragon-anqx.ttf" id="1_8kvxl"]
+[ext_resource type="AudioStream" uid="uid://cndtrhe7022wd" path="res://assets/audio/minecraft_8bit.mp3" id="1_hbkbo"]
+[ext_resource type="Script" path="res://scripts/back_to_main.gd" id="1_jvm3m"]
+[ext_resource type="Script" path="res://scripts/autodisappear.gd" id="3_62vnj"]
+[ext_resource type="Texture2D" uid="uid://x8xm63sumtwj" path="res://assets/sprites/mouse.png" id="4_e6ocj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tlc4y"]
+line_spacing = 15.0
+font = ExtResource("1_8kvxl")
+font_size = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv321"]
+atlas = ExtResource("4_e6ocj")
+region = Rect2(0, 0, 1925, 1838)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayc0w"]
+atlas = ExtResource("4_e6ocj")
+region = Rect2(1925, 0, 1925, 1838)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o76p4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv321")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayc0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Ending3" type="Node2D"]
+script = ExtResource("1_jvm3m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_hbkbo")
+volume_db = -14.257
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -38.0
+offset_top = -32.0
+offset_right = 1196.0
+offset_bottom = 666.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 1151.0
+offset_bottom = 651.0
+theme_override_fonts/font = ExtResource("1_8kvxl")
+theme_override_font_sizes/font_size = 40
+text = "Nothing really changed,
+i mean what did you expect?
+
+THE END."
+label_settings = SubResource("LabelSettings_tlc4y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1098.17, 579.529)
+scale = Vector2(0.0397482, 0.0397482)
+sprite_frames = SubResource("SpriteFrames_o76p4")
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_62vnj")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D"]
+offset_left = -35.0
+offset_top = -33.0
+offset_right = 1199.0
+offset_bottom = 665.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 1154.0
+offset_bottom = 650.0
+theme_override_fonts/font = ExtResource("1_8kvxl")
+theme_override_font_sizes/font_size = 40
+text = "50 years later..."
+label_settings = SubResource("LabelSettings_tlc4y")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cvp3vmm2n21ko"]
+
+[ext_resource type="FontFile" uid="uid://nfltrt25020i" path="res://assets/fonts/Pixel Square 10.ttf" id="1_h16bj"]
+[ext_resource type="StyleBox" uid="uid://dl0tnvbyjv1bg" path="res://assets/themes/new_style_box_flat.tres" id="2_h5j1h"]
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 25
+RichTextLabel/fonts/normal_font = ExtResource("1_h16bj")
+ScrollContainer/styles/panel = ExtResource("2_h5j1h")

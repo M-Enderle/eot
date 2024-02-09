@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1x3a7tknc8i3"]
+
+[ext_resource type="Texture2D" uid="uid://bqjtjige6sm4x" path="res://assets/cutscenes/ending_2.webp" id="1_f4o2x"]
+[ext_resource type="AudioStream" uid="uid://6uedt0mt3g4j" path="res://assets/audio/doom_8bit.mp3" id="1_j725q"]
+[ext_resource type="Script" path="res://scripts/back_to_main.gd" id="1_r050w"]
+[ext_resource type="FontFile" uid="uid://40k34bl32w2c" path="res://assets/fonts/EightBitDragon-anqx.ttf" id="2_ha3wg"]
+[ext_resource type="Script" path="res://scripts/autodisappear.gd" id="4_u6t72"]
+[ext_resource type="Texture2D" uid="uid://x8xm63sumtwj" path="res://assets/sprites/mouse.png" id="5_hkymj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_te55y"]
+line_spacing = 15.0
+font = ExtResource("2_ha3wg")
+font_size = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv321"]
+atlas = ExtResource("5_hkymj")
+region = Rect2(0, 0, 1925, 1838)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayc0w"]
+atlas = ExtResource("5_hkymj")
+region = Rect2(1925, 0, 1925, 1838)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82a43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv321")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayc0w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1hqg"]
+line_spacing = 15.0
+font = ExtResource("2_ha3wg")
+font_size = 25
+
+[node name="Ending2" type="Node2D"]
+script = ExtResource("1_r050w")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_j725q")
+volume_db = -11.435
+autoplay = true
+
+[node name="Dall·e2024-02-0800_25_18-A16-bitPixelArtStyleImageDepictingADestroyedWorld,WithBombsGoingOffInAnApocalypticScene_TheLandscapeIsRavaged,WithCrumblingBui" type="Sprite2D" parent="."]
+position = Vector2(586, 355)
+scale = Vector2(0.707031, 0.707031)
+texture = ExtResource("1_f4o2x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 41.0
+offset_top = 462.0
+offset_right = 873.0
+offset_bottom = 622.0
+color = Color(0, 0, 0, 0.596078)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 62.0
+offset_top = 480.0
+offset_right = 1242.0
+offset_bottom = 725.0
+theme_override_fonts/font = ExtResource("2_ha3wg")
+theme_override_font_sizes/font_size = 40
+text = "You FOOL! Did you really think my goal was to help
+humanity? I wanted power. And you didn't stop me!
+Now humanity will suffer."
+label_settings = SubResource("LabelSettings_te55y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1098.17, 579.529)
+scale = Vector2(0.0397482, 0.0397482)
+sprite_frames = SubResource("SpriteFrames_82a43")
+autoplay = "default"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_u6t72")
+
+[node name="Timer" type="Timer" parent="Node2D"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D"]
+offset_left = -35.0
+offset_top = -33.0
+offset_right = 1199.0
+offset_bottom = 665.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 1154.0
+offset_bottom = 650.0
+theme_override_fonts/font = ExtResource("2_ha3wg")
+theme_override_font_sizes/font_size = 40
+text = "50 years later..."
+label_settings = SubResource("LabelSettings_r1hqg")
+horizontal_alignment = 1
+vertical_alignment = 1

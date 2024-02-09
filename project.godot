@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="Game"
-run/main_scene="res://scenes/levels/1.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]
 
 Store="*res://scripts/Store.gd"
-Openai="*res://scripts/menu/key_check.gd"
+Openai="*res://scripts/Openai.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
