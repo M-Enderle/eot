@@ -1,14 +1,17 @@
-[gd_scene load_steps=52 format=3 uid="uid://b1c30if32dys4"]
+[gd_scene load_steps=61 format=3 uid="uid://b1c30if32dys4"]
 
 [ext_resource type="Script" path="res://scripts/levels/1.gd" id="1_f5r3t"]
 [ext_resource type="Texture2D" uid="uid://dllpiy4t3843t" path="res://assets/levels/1/level1_main.png" id="1_wbb20"]
 [ext_resource type="Script" path="res://scripts/LittleScientist.gd" id="2_pdt14"]
 [ext_resource type="Texture2D" uid="uid://usg6yyfgfn3t" path="res://assets/sprites/scientist.png" id="2_s32d4"]
+[ext_resource type="AudioStream" uid="uid://cndtrhe7022wd" path="res://assets/audio/minecraft_8bit.mp3" id="2_wxw28"]
 [ext_resource type="Texture2D" uid="uid://3kyunx0qasdy" path="res://assets/sprites/Scientists.png" id="3_iy80v"]
 [ext_resource type="Texture2D" uid="uid://su6ct0dtpt53" path="res://assets/levels/1/level1_front.png" id="5_lpumw"]
 [ext_resource type="Texture2D" uid="uid://cn21kcane3ji" path="res://assets/sprites/Keys/Space-Key.png" id="6_paecn"]
 [ext_resource type="Texture2D" uid="uid://ctckhyrdxftt1" path="res://assets/levels/final/exit.png" id="7_bud6p"]
 [ext_resource type="FontFile" uid="uid://nfltrt25020i" path="res://assets/fonts/Pixel Square 10.ttf" id="8_4lyhq"]
+[ext_resource type="Theme" uid="uid://cvp3vmm2n21ko" path="res://assets/themes/final.tres" id="10_h4j47"]
+[ext_resource type="FontFile" uid="uid://40k34bl32w2c" path="res://assets/fonts/EightBitDragon-anqx.ttf" id="11_fd2os"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8umcf"]
 size = Vector2(37, 35.5)
@@ -294,8 +297,41 @@ animations = [{
 "speed": 1.5
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhmur"]
+bg_color = Color(0.462745, 0.643137, 0.580392, 1)
+
+[sub_resource type="Theme" id="Theme_ygqae"]
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("8_4lyhq")
+Button/styles/panel = SubResource("StyleBoxFlat_rhmur")
+
+[sub_resource type="Theme" id="Theme_56tu6"]
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("8_4lyhq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tigg0"]
+bg_color = Color(0, 0.431373, 0.878431, 0.639216)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_s0puo"]
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_tigg0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsyuc"]
+line_spacing = 15.0
+font = ExtResource("11_fd2os")
+font_size = 25
+
 [node name="1" type="Node2D"]
 script = ExtResource("1_f5r3t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_wxw28")
+autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -388,21 +424,21 @@ scale = Vector2(0.643, 0.643)
 texture = ExtResource("5_lpumw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 52.0
-offset_top = 50.0
-offset_right = 486.0
-offset_bottom = 224.0
+offset_left = 51.0
+offset_top = 302.0
+offset_right = 314.0
+offset_bottom = 413.0
 color = Color(0, 0.313726, 0.643137, 0.815686)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 11.0
-offset_right = 415.0
-offset_bottom = 183.0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 303.0
+offset_bottom = 181.0
 theme_override_fonts/normal_font = ExtResource("8_4lyhq")
 theme_override_font_sizes/normal_font_size = 23
-text = "This is where the player would be able to play a minimage, such as for example trolly problem and  talk to important AI related people like turin and  elon musk."
+text = "Here, the player would play a minigame that fits the topic"
 
 [node name="ExitButton" type="Button" parent="."]
 offset_left = 1028.0
@@ -414,3 +450,88 @@ offset_bottom = 516.0
 position = Vector2(42, 23)
 scale = Vector2(0.189956, 0.189956)
 texture = ExtResource("7_bud6p")
+
+[node name="Chat" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Chat"]
+offset_left = 209.0
+offset_top = 545.0
+offset_right = 943.0
+offset_bottom = 638.0
+color = Color(0, 0, 0, 0.415686)
+
+[node name="ChatInput" type="LineEdit" parent="Chat"]
+offset_left = 209.0
+offset_top = 587.0
+offset_right = 943.0
+offset_bottom = 638.0
+theme_override_fonts/font = ExtResource("8_4lyhq")
+theme_override_font_sizes/font_size = 30
+
+[node name="A1" type="Button" parent="Chat"]
+offset_left = 210.0
+offset_top = 547.0
+offset_right = 565.0
+offset_bottom = 582.0
+theme = SubResource("Theme_ygqae")
+
+[node name="A2" type="Button" parent="Chat"]
+offset_left = 585.0
+offset_top = 547.0
+offset_right = 938.0
+offset_bottom = 582.0
+theme = SubResource("Theme_56tu6")
+
+[node name="Button" type="Button" parent="Chat"]
+offset_left = 862.0
+offset_top = 583.0
+offset_right = 935.0
+offset_bottom = 623.0
+flat = true
+
+[node name="Exit" type="Sprite2D" parent="Chat/Button"]
+position = Vector2(37, 28)
+scale = Vector2(0.16048, 0.16048)
+texture = ExtResource("7_bud6p")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Chat"]
+offset_left = 215.0
+offset_top = 69.0
+offset_right = 959.0
+offset_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_s0puo")
+
+[node name="ChatWindow" type="RichTextLabel" parent="Chat/ScrollContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("10_h4j47")
+text = "..."
+fit_content = true
+
+[node name="LastFrame" type="ColorRect" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 1181.0
+offset_bottom = 669.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="LastFrame"]
+offset_left = 31.0
+offset_top = 27.0
+offset_right = 1179.0
+offset_bottom = 679.0
+theme_override_fonts/font = ExtResource("11_fd2os")
+theme_override_font_sizes/font_size = 40
+text = "Some levels later..."
+label_settings = SubResource("LabelSettings_wsyuc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="LastFrame"]
+wait_time = 4.0

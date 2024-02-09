@@ -9,14 +9,10 @@ func _ready():
 	line_edit.connect("text_submitted", Callable(self, "start_game_from_lineedit"))
 
 func start_game():
-	if len($KeyInput.text) == 6 and $KeyInput.text.find(".") != -1:
-		$ErrorLabel.visible = false
-		Store.set_rev_ip($KeyInput.text)
-		$KeyChecker.test_rev($ErrorLabel)
 		
-	elif $KeyInput.text.find("sk-") != -1:
+	if $KeyInput.text.find("sk-") != -1:
 		$ErrorLabel.visible = false
-		Store.openai_key = $KeyInput.text
+		Openai.openai_key = $KeyInput.text
 		$KeyChecker.test_api_key($ErrorLabel)
 		
 	else:

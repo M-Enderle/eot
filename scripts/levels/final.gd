@@ -12,6 +12,7 @@ func _ready():
 	$RedButton.pressed.connect(_red_button)
 	$Chat/Button.pressed.connect(_leave)
 	$EndTimer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+	Openai.message_history = []
 	
 func _on_Timer_timeout():
 	if destroyed:
@@ -53,7 +54,6 @@ func _red_button():
 		destroyed = true
 		$EndTimer.start()
 		_prepare_message()
-		
 		
 func _leave():
 	Openai.get_completion("[player leaves]")

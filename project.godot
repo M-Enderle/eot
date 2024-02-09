@@ -16,8 +16,11 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]
 
-Store="*res://scripts/Store.gd"
 Openai="*res://scripts/Openai.gd"
+
+[editor]
+
+movie_writer/movie_file="I:/My Drive/THD/Semester 7/Gaming/New GAme/movie.avi"
 
 [editor_plugins]
 
